@@ -1,0 +1,17 @@
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+#Env variables
+.env
+# but keep .env.example tracked (template for other devs)
+!.env.example
+
+#Node
+/node_modules/
+
+## Allure
+/allure-results/
+/allure-report/
