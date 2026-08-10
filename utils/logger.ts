@@ -33,9 +33,6 @@ export const logger = {
   error: (...args: unknown[]) => {
     if (currentLevel <= LogLevel.ERROR) console.error(`[${timestamp()}] [ERROR]`, ...args);
   },
-  step: (message: string) => {
-    if (currentLevel <= LogLevel.INFO) console.log(`\n[${timestamp()}] [STEP] ${message}`);
-  },
 };
 
 export function logPageAction(page: string, action: string, ...details: unknown[]) {

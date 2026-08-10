@@ -53,7 +53,7 @@ automation_exercise/
 │   └── DeleteAccountPage.ts
 ├── tests/                      # Casos de prueba
 │   ├── home.spec.ts
-│   ├── login_signup.spec.ts
+│   ├── loginSignup.spec.ts
 │   ├── products.spec.ts
 │   ├── cart.spec.ts
 │   └── checkout.spec.ts
@@ -173,15 +173,15 @@ El proyecto incluye un workflow de GitHub Actions con **cache inteligente** que 
 
 ## 🧰 Tecnologías Utilizadas
 
-| Tecnología | Propósito |
-|---|---|
-| **Playwright** | Framework de automatización E2E multi-navegador |
-| **TypeScript** | Tipado estático, interfaces, POO con `strict: true` |
-| **ESLint + Prettier** | Calidad y formato consistente de código |
-| **Allure** | Reportes visuales avanzados de pruebas |
-| **GitHub Actions** | CI/CD con caching inteligente y ejecución manual |
-| **Node.js / npm** | Entorno de ejecución y gestión de dependencias |
-| **dotenv** | Configuración por entorno |
+| Tecnología            | Propósito                                           |
+| --------------------- | --------------------------------------------------- |
+| **Playwright**        | Framework de automatización E2E multi-navegador     |
+| **TypeScript**        | Tipado estático, interfaces, POO con `strict: true` |
+| **ESLint + Prettier** | Calidad y formato consistente de código             |
+| **Allure**            | Reportes visuales avanzados de pruebas              |
+| **GitHub Actions**    | CI/CD con caching inteligente y ejecución manual    |
+| **Node.js / npm**     | Entorno de ejecución y gestión de dependencias      |
+| **dotenv**            | Configuración por entorno                           |
 
 ---
 

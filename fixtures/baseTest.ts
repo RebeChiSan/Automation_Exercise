@@ -11,6 +11,8 @@ import { ProductsPage } from '../pages/ProductsPage';
 import { SignUpPage } from '../pages/SignUpPage';
 import { ViewCartPage } from '../pages/ViewCartPage';
 
+export type RegisterCleanup = (fn: () => Promise<void>) => void;
+
 type MyFixtures = {
   accountCreatedPage: AccountCreatedPage;
   checkoutPage: CheckoutPage;
@@ -23,6 +25,7 @@ type MyFixtures = {
   signupPage: SignUpPage;
   viewCartPage: ViewCartPage;
   blockAnnoying: void;
+  registerCleanup: RegisterCleanup;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -63,6 +66,13 @@ export const test = base.extend<MyFixtures>({
     },
     { auto: true },
   ],
+  registerCleanup: async ({ }, use) => {
+    const cleanupFns: Array<() => Promise<void>> = [];
+    await use((fn) => cleanupFns.push(fn));
+    for (const fn of cleanupFns.reverse()) {
+      await fn();
+    }
+  },
 });
 
 export { expect };

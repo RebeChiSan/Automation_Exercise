@@ -53,7 +53,7 @@ automation_exercise/
 │   └── DeleteAccountPage.ts
 ├── tests/                      # Test cases
 │   ├── home.spec.ts
-│   ├── login_signup.spec.ts
+│   ├── loginSignup.spec.ts
 │   ├── products.spec.ts
 │   ├── cart.spec.ts
 │   └── checkout.spec.ts
@@ -173,15 +173,15 @@ The project includes a GitHub Actions workflow with **smart caching** that speed
 
 ## 🧰 Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| **Playwright** | Multi-browser E2E automation framework |
-| **TypeScript** | Static typing, interfaces, OOP with `strict: true` |
-| **ESLint + Prettier** | Consistent code quality and formatting |
-| **Allure** | Advanced visual test reports |
-| **GitHub Actions** | CI/CD with smart caching and manual execution |
-| **Node.js / npm** | Runtime environment and dependency management |
-| **dotenv** | Environment-based configuration |
+| Technology            | Purpose                                            |
+| --------------------- | -------------------------------------------------- |
+| **Playwright**        | Multi-browser E2E automation framework             |
+| **TypeScript**        | Static typing, interfaces, OOP with `strict: true` |
+| **ESLint + Prettier** | Consistent code quality and formatting             |
+| **Allure**            | Advanced visual test reports                       |
+| **GitHub Actions**    | CI/CD with smart caching and manual execution      |
+| **Node.js / npm**     | Runtime environment and dependency management      |
+| **dotenv**            | Environment-based configuration                    |
 
 ---
 

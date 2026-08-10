@@ -16,7 +16,18 @@
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/no-explicit-any": "error",
     "playwright/no-focused-test": "error",
-    "playwright/valid-expect": "error"
+    "playwright/valid-expect": "error",
+    "playwright/expect-expect": [
+      "warn",
+      {
+        "assertFunctionNames": [
+          "registerNewUser",
+          "loginExistingUser",
+          "deleteCurrentAccount",
+          "completeCheckoutAndPay"
+        ]
+      }
+    ]
   },
   "ignorePatterns": ["dist", "node_modules", "playwright-report", "test-results", "allure-results", "allure-report"]
 }

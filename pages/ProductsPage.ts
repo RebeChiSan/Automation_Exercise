@@ -82,7 +82,7 @@ export class ProductsPage extends BasePage {
   }
 
   async expectSearchedProductsAreVisible(item: string): Promise<number> {
-    await this.productNameList.waitFor({ state: 'visible' });
+    await this.productNameList.first().waitFor({ state: 'visible' });
     const searchProductCount = await this.productNameList.count();
     await expect(this.productNameList).not.toHaveCount(0);
     for (let i = 0; i < searchProductCount; i++) {

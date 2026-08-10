@@ -23,26 +23,31 @@ export class CheckoutPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.fullName = page.locator("ul[id='address_delivery'] li:nth-child(2)");
-    this.company = page.locator("ul[id='address_delivery'] li:nth-child(3)");
-    this.address1 = page.locator("ul[id='address_delivery'] li:nth-child(4)");
-    this.address2 = page.locator("ul[id='address_delivery'] li:nth-child(5)");
-    this.city = page.locator("ul[id='address_delivery'] li:nth-child(6)");
-    this.country = page.locator("ul[id='address_delivery'] li:nth-child(7)");
-    this.phone = page.locator("ul[id='address_delivery'] li:nth-child(8)");
+    const deliveryList = page.locator("ul[id='address_delivery']");
+    const deliveryAddressLines = deliveryList.locator('.address_address1.address_address2');
+    this.fullName = deliveryList.locator('.address_firstname.address_lastname');
+    this.company = deliveryAddressLines.nth(0);
+    this.address1 = deliveryAddressLines.nth(1);
+    this.address2 = deliveryAddressLines.nth(2);
+    this.city = deliveryList.locator('.address_city.address_state_name.address_postcode');
+    this.country = deliveryList.locator('.address_country_name');
+    this.phone = deliveryList.locator('.address_phone');
     this.commentInput = page.locator("textarea[name='message']");
     this.placeOrderButton = page.getByText('Place Order');
     this.productDescription = page.locator("//td[@class='cart_description']/h4");
-    this.fullNameInvoice = page.locator("ul[id='address_invoice'] li:nth-child(2)");
-    this.companyInvoice = page.locator("ul[id='address_invoice'] li:nth-child(3)");
-    this.address1Invoice = page.locator("ul[id='address_invoice'] li:nth-child(4)");
-    this.address2Invoice = page.locator("ul[id='address_invoice'] li:nth-child(5)");
-    this.cityInvoice = page.locator("ul[id='address_invoice'] li:nth-child(6)");
-    this.countryInvoice = page.locator("ul[id='address_invoice'] li:nth-child(7)");
-    this.phoneInvoice = page.locator("ul[id='address_invoice'] li:nth-child(8)");
+
+    const invoiceList = page.locator("ul[id='address_invoice']");
+    const invoiceAddressLines = invoiceList.locator('.address_address1.address_address2');
+    this.fullNameInvoice = invoiceList.locator('.address_firstname.address_lastname');
+    this.companyInvoice = invoiceAddressLines.nth(0);
+    this.address1Invoice = invoiceAddressLines.nth(1);
+    this.address2Invoice = invoiceAddressLines.nth(2);
+    this.cityInvoice = invoiceList.locator('.address_city.address_state_name.address_postcode');
+    this.countryInvoice = invoiceList.locator('.address_country_name');
+    this.phoneInvoice = invoiceList.locator('.address_phone');
   }
 
-  async verifyDeliveryAddressDetails(user: User) {
+  async expectDeliveryAddressDetails(user: User) {
     await expect(this.fullName).toHaveText(user.fullName);
     await expect(this.company).toHaveText(user.companyName);
     await expect(this.address1).toHaveText(user.address1);
@@ -52,7 +57,7 @@ export class CheckoutPage extends BasePage {
     await expect(this.phone).toHaveText(user.phoneNumber);
   }
 
-  async verifyBillingAddressDetails(user: User) {
+  async expectBillingAddressDetails(user: User) {
     await expect(this.fullNameInvoice).toHaveText(user.fullName);
     await expect(this.companyInvoice).toHaveText(user.companyName);
     await expect(this.address1Invoice).toHaveText(user.address1);

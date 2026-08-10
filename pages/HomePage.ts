@@ -8,7 +8,7 @@ export class HomePage extends BasePage {
   readonly menSubCategoriesList: Locator;
   readonly viewProductBtnList: Locator;
   readonly addToCartBtnList: Locator;
-  readonly addCartButton: Locator;
+  readonly recommendedAddToCartButton: Locator;
   readonly recommendedProductNamesList: Locator;
   readonly kidsSubCategoriesList: Locator;
   readonly recommendedItemsTitle: Locator;
@@ -16,7 +16,6 @@ export class HomePage extends BasePage {
   readonly homeLogo: Locator;
   readonly dressOption: Locator;
   readonly jeansOption: Locator;
-
 
   constructor(page: Page) {
     super(page);
@@ -26,13 +25,16 @@ export class HomePage extends BasePage {
     this.womenSubCategoriesList = page.locator("//a[normalize-space()='Women']");
     this.menSubCategoriesList = page.locator("//a[normalize-space()='Men']");
     this.dressOption = page.locator("(//a[contains(text(),'Dress')])[1]");
-    this.jeansOption = page.locator("//a[normalize-space()='Jeans']")
+    this.jeansOption = page.locator("//a[normalize-space()='Jeans']");
     this.kidsSubCategoriesList = page.locator("//div[@id='Kids']/div/ul/li/a");
     this.viewProductBtnList = page.locator("//a[contains(text(),'View Product')]");
     this.addToCartBtnList = page.locator("//div[@class='carousel-inner']//a[@class='btn btn-default add-to-cart']");
-    this.addCartButton = page.locator("a[data-product-id='4']").nth(2);
     this.recommendedItemsTitle = page.getByText('RECOMMENDED ITEMS');
     this.recommendedProductNamesList = page.locator('.recommended_items .item.active p');
+    this.recommendedAddToCartButton = page
+      .locator('.recommended_items .item.active .productinfo')
+      .first()
+      .locator('.add-to-cart');
     this.viewCartLink = page.getByText('View Cart');
   }
   async clickOnDressSubcategory() {
@@ -55,7 +57,7 @@ export class HomePage extends BasePage {
 
   async addRecommendedItemThenViewCart(): Promise<string | null> {
     const productName = await this.recommendedProductNamesList.first().textContent();
-    await this.addCartButton.click();
+    await this.recommendedAddToCartButton.click();
     await this.viewCartLink.click();
     return productName;
   }

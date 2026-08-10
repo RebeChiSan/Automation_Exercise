@@ -37,7 +37,7 @@ export class ViewCartPage extends BasePage {
     await this.page.locator('#checkoutModal').getByRole('link', { name: 'Register / Login' }).click();
   }
 
-  async verifyProductRemoval(add: number, remove: number) {
+  async expectProductRemoval(add: number, remove: number) {
     await expect(this.productDescriptionList).toHaveCount(add - remove);
   }
 
@@ -60,7 +60,7 @@ export class ViewCartPage extends BasePage {
     }
   }
 
-  async verifyProductDetails(items: number) {
+  async expectProductDetails(items: number) {
     for (let i = 0; i < items; i++) {
       const productRow = this.productRows.nth(i);
       await expect(productRow.locator('.cart_description')).toBeVisible();

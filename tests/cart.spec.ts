@@ -23,7 +23,7 @@ test.describe('Cart Page functionalities', () => {
     await productsPage.clickViewCartLink();
     await expect(viewCartPage.cartTable).toBeVisible();
     await expect(viewCartPage.productRows).toHaveCount(numberOfProducts);
-    await viewCartPage.verifyProductDetails(numberOfProducts);
+    await viewCartPage.expectProductDetails(numberOfProducts);
   });
 
   test('TC_13: Verify Product quantity in Cart', async ({ homePage, productDetailsPage, viewCartPage }) => {
@@ -53,7 +53,7 @@ test.describe('Cart Page functionalities', () => {
     await homePage.clickCart();
     await viewCartPage.waitForLoad();
     await expect(viewCartPage.cartTable).toBeVisible();
-    await viewCartPage.verifyProductRemoval(numberOfProducts, removedProducts);
+    await viewCartPage.expectProductRemoval(numberOfProducts, removedProducts);
   });
 
   test('TC_20: Search Products and Verify Cart After Login', async ({
